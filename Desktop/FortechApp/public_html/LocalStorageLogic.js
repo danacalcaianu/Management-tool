@@ -71,6 +71,8 @@ var issue = {
         var year = dateObj.getUTCFullYear();
         newdate = year + "/" + month + "/" + day;
         //prepare the user variable
+	if(localStorage.getItem("user"))
+	{
         var user = JSON.parse(localStorage.getItem("user"));
         //Read all elements on UI using class name 
         var inputs = document.getElementsByClassName("c1");
@@ -98,6 +100,11 @@ var issue = {
         localStorage.setItem("issue_" + issue.name, JSON.stringify(issue));
         //Reload the Page 
         location.reload();
+	}
+	else
+	{
+		alert("Please log in to submit an issue!");
+	}
     },
     updateitem: function ()
     {
