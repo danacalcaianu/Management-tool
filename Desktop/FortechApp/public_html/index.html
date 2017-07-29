@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Project Management Tool</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div id="userform">
+            <h3>USER:</h3>
+            <form id="registerform">
+                <input id="txtuser" type="text">
+                <input id="btnregister" type="button" value="Register"  onclick="user.saveUser();">
+            </form>
+            <form id="loginform">
+                <input id="useraccount" type="text" required>
+                <input type="button" value="Login" onclick="user.loginUser();">
+            </form>
+        </div>
+        <div id="message">
+        </div>
+        <div id="projects">
+        </div>
+        <div id="savesprint" style="display:none;">
+            <form id="sprint">
+                <input id="txtsprintsave" type="text">
+                <input id="savesprintbtn" type="button" value="Save sprint">
+            </form>
+        </div>
+        <div>
+            <input id="btncreatesprint" type="button" value="Create Sprint" onclick="showDiv('savesprint')" />
+        </div>
+        <div id="createform" style="display:none;">
+            <table style="width:100%;" id="tbl"> 
+                <tr> 
+                    <td> 
+                        <input id="txtid" type="hidden"  class="c1"/>
+                    </td> 
+                </tr> 
+                <tr> 
+                    <td>Type:</td> 
+                    <td> 
+                        <select id="lsttype" class="c1" > 
+                            <option>Features</option> 
+                            <option>Bugs</option> 
+                            <option>Tasks</option> 
+                        </select> 
+                    </td> 
+                </tr> 
+                <tr> 
+                    <td>Name:</td> 
+                    <td> 
+                        <input id="txtname" type="text" class="c1"/>
+                    </td> 
+                </tr> 
+                <tr> 
+                    <td>Sprint:</td> 
+                    <td> 
+                        <select id="txtsprint" class="c1"> 
+
+                        </select> 
+                    </td> 
+                </tr> 
+                <tr> 
+                    <td> 
+                        <input id="txtuser2" type="hidden" class="c1" />
+                    </td> 
+                </tr> 
+                <tr> 
+                    <td>asignee:</td> 
+                    <td> 
+                        <input id="txtasignee" type="text" class="c1" />
+                    </td> 
+                </tr> 
+                <tr> 
+                    <td>Description:</td> 
+                    <td> 
+                        <textarea id="txtdescription" class="c1"></textarea>
+                    </td> 
+                </tr> 
+                <tr> 
+                    <td> 
+                        <input id="txtstatus" type="hidden" class="c1"/>
+                    </td> 
+                </tr> 
+                <tr> 
+                    <td>Subtasks</td> 
+                    <td>
+                        <div id="checkboxformcreate">
+                        </div>
+                    </td>
+                </tr> 
+                <tr> 
+                    <td>comment:</td> 
+                    <td> 
+                        <input id="txtcomment" type="text" class="c1"/>
+                    </td> 
+                </tr> 
+                <tr> 
+                    <td> 
+                        <input id="txtupdate" type="hidden" class="c1"/>
+                    </td> 
+                </tr> 
+                <tr> 
+                    <td> 
+                        <input id="txtcreated" type="hidden" class="c1"/>
+                    </td> 
+                </tr>  
+                <tr> 
+                    <td>
+                        <input id="btnsave" type="button" value="Save" />
+                        <input id="btncancelcreate" type="button" value="Cancel" onclick="hideDiv('createform')" />
+                    </td> 
+                </tr> 
+            </table> 
+        </div>
+        <div id="updateform" style="display:none;">
+            <table style="width:100%;" id="tbl"> 
+                <tr> 
+                    <td>Issue:</td>
+                    <td> 
+                        <select id="txtissueid" class="update"> 
+                        </select> 
+                    </td> 
+                </tr> 
+                <tr> 
+                    <td>Type:</td> 
+                    <td> 
+                        <select id="lsttype" class="update"> 
+                            <option>Features</option> 
+                            <option>Bugs</option> 
+                            <option>Tasks</option> 
+                        </select> 
+                    </td> 
+                </tr> 
+                <tr> 
+                    <td>Name:</td> 
+                    <td> 
+                        <input id="updatename" type="text" class="update"/>
+                    </td> 
+                </tr> 
+                <tr>
+                    <td>Sprint:</td> 
+                    <td> 
+                        <select id="updatesprint" class="update"> 
+                        </select> 
+                    </td>  
+                </tr> 
+                <tr> 
+                    <td> 
+                        <input class="txtuser2" type="hidden" class="update" />
+                    </td> 
+                </tr> 
+                <tr> 
+                    <td>asignee:</td> 
+                    <td> 
+                        <input id="txtasignee" type="text" class="update" />
+                    </td> 
+                </tr> 
+                <tr> 
+                    <td>Description:</td> 
+                    <td> 
+                        <textarea id="updatedescription" class="update"></textarea>
+                    </td> 
+                </tr> 
+                <tr> 
+                    <td>Status:</td>
+                    <td> 
+                        <select id="updatestatus" class="update"> 
+                            <option>New</option>
+                            <option>In progress</option> 
+                            <option>Feedback</option> 
+                            <option>Rework</option> 
+                            <option>Resolved</option> 
+                        </select> 
+                    </td> 
+                </tr> 
+                <tr> 
+                    <td>Subtasks:</td> 
+                    <td> 
+                        <div id="checkboxform"></div>
+                    </td> 
+                </tr> 
+                <tr> 
+                    <td>comment:</td> 
+                    <td> 
+                        <input id="txtcomment" type="text" class="update"/>
+                    </td> 
+                </tr> 
+                <tr> 
+                    <td> 
+                        <input id="txtupdate" type="hidden" class="update"/>
+                    </td> 
+                </tr> 
+                <tr> 
+                    <td> 
+                        <input id="txtcreated" type="hidden" class="update"/>
+                    </td> 
+                </tr> 
+            </table> 
+            <input id="btnupdate" type="button" value="Update" />
+            <input id="btncancel" type="button" value="Cancel" onclick="hideDiv('updateform')" />
+        </div>
+        <div id="appbuttons">
+            <input id="btncreate" type="button" value="Create issue" onclick="showDiv('createform');
+                    putselectsprint();
+                    populate('checkboxformcreate')"/>
+            <input id="btnupdateform" type="button" value="Update issue" onclick="showDiv('updateform');
+                    putselect();
+                    putselectsprint2();
+                    populate('checkboxform')"/>
+            <input id="btnclearstorage" type="button" value="Clear Storage" />
+        </div>
+        <script src="LocalStorageLogic.js"></script>
+        <div id="dvcontainer">
+        </div>
+        <div id="filters">
+            Filter issue by:
+            <select id="filterchoice" > 
+                <option value="1">sprint</option>
+                <option value="2">status</option>
+            </select> 
+            <input id="filterbutton" type="button" value="Select" onclick="checkinput()"/>
+            <div id="filter">
+                <div id="filterselectdiv" style="display:none;">
+                    <select id="filterselect" > 
+                    </select> 
+                    <input id="selected" type="button" value="Select" onclick="showDiv('filteredtable');
+                            filterbysprint()"/>
+                </div>
+                <div id="filterselectdiv2" style="display:none;">
+                    <select id="filterselect2" > 
+                        <option >New</option>
+                        <option >In progress</option> 
+                        <option >Feedback</option> 
+                        <option >Rework</option> 
+                        <option >Resolved</option> 
+                    </select> 
+                    <input id="selected" type="button" value="Select" onclick="showDiv('filteredtable');
+                            filterbystatus()"/>
+                </div>
+            </div>
+        </div>
+        <div id="filteredtable" style="display:none;">
+        </div>
+    </body>
+
+</html>
